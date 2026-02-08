@@ -13,6 +13,25 @@ This project implements PCA from scratch using World Bank development indicators
 - Benchmark the implementation
 - Create visualizations of the transformed data
 
+## Viewing the Notebooks
+
+**IMPORTANT FOR GRADING:** The notebooks contain all executed cells, outputs, and visualizations (752KB and 589KB). However, GitHub may not render large notebooks directly in the browser.
+
+**Recommended viewing methods:**
+
+1. **Clone and open locally (BEST for grading):**
+   ```bash
+   git clone https://github.com/SLICKMAN-TYRUS/Principle-Component-Analysis-Assignment.git
+   cd Principle-Component-Analysis-Assignment
+   jupyter notebook
+   ```
+
+2. **Download individual files:** Click on each `.ipynb` file → Click "Download" button → Open in Jupyter
+
+3. **Use nbviewer (online viewing):**
+   - [Template_PCA_Formative_1[Peer_Pair_Number].ipynb](https://nbviewer.org/github/SLICKMAN-TYRUS/Principle-Component-Analysis-Assignment/blob/main/Template_PCA_Formative_1%5BPeer_Pair_Number%5D.ipynb)
+   - [data_exploration.ipynb](https://nbviewer.org/github/SLICKMAN-TYRUS/Principle-Component-Analysis-Assignment/blob/main/data_exploration.ipynb)
+
 ## Project Structure
 
 ```
