@@ -4,64 +4,62 @@
 
 This project implements PCA from scratch using World Bank development indicators for Sub-Saharan Africa. The implementation covers eigenvalues, eigenvectors, covariance matrices, and dimensionality reduction.
 
-### Objectives
+### Goals
 
-- Implement PCA without using sklearn
-- Apply eigendecomposition on covariance matrices
-- Select principal components based on explained variance threshold
-- Reduce dimensionality while retaining most variance
+- Implement PCA without sklearn
+- Calculate covariance matrices and apply eigendecomposition
+- Select principal components based on explained variance
+- Reduce dimensions while keeping most of the variance
 - Benchmark the implementation
-- Create visualizations of the transformed data
+- Create visualizations
 
 ## Viewing the Notebooks
 
-**IMPORTANT FOR GRADING:** The notebooks contain all executed cells, outputs, and visualizations (752KB and 589KB). However, GitHub may not render large notebooks directly in the browser.
+**NOTE:** The notebooks have all the executed cells and outputs (752KB and 589KB), but GitHub might not render large notebooks directly in the browser.
 
-**Recommended viewing methods:**
+**How to view:**
 
-1. **Clone and open locally (BEST for grading):**
+1. **Clone and open locally (recommended for grading):**
    ```bash
    git clone https://github.com/SLICKMAN-TYRUS/Principle-Component-Analysis-Assignment.git
    cd Principle-Component-Analysis-Assignment
    jupyter notebook
    ```
 
-2. **Download individual files:** Click on each `.ipynb` file → Click "Download" button → Open in Jupyter
+2. **Download files:** Click on each `.ipynb` file then click "Download" button and open in Jupyter
 
-3. **Use nbviewer (online viewing):**
+3. **Use nbviewer:**
    - [Template_PCA_Formative_1[Peer_Pair_Number].ipynb](https://nbviewer.org/github/SLICKMAN-TYRUS/Principle-Component-Analysis-Assignment/blob/main/Template_PCA_Formative_1%5BPeer_Pair_Number%5D.ipynb)
    - [data_exploration.ipynb](https://nbviewer.org/github/SLICKMAN-TYRUS/Principle-Component-Analysis-Assignment/blob/main/data_exploration.ipynb)
 
 ## Project Structure
 
 ```
-Principle-Component-Analysis Assignment/
-│
-├── API_SSF_DS2_en_csv_v2_1688.csv                    # World Bank raw data
+├── API_SSF_DS2_en_csv_v2_1688.csv                    # Raw World Bank data
 ├── Metadata_Country_API_SSF_DS2_en_csv_v2_1688.csv   # Country metadata
 ├── Metadata_Indicator_API_SSF_DS2_en_csv_v2_1688.csv # Indicator metadata
-├── data_exploration.ipynb                            # Data exploration & preparation
-├── Template_PCA_Formative_1[Peer_Pair_Number].ipynb  # Main PCA implementation
-├── prepared_data_for_pca.csv                         # Cleaned data (generated)
+├── data_exploration.ipynb                            # Data prep notebook
+├── Template_PCA_Formative_1[Peer_Pair_Number].ipynb  # Main PCA notebook
+├── prepared_data_for_pca.csv                         # Cleaned data
 └── README.md                                         # This file
 ```
 
-## Installation
+## Setup
 
 ### Requirements
 
-- Python 3.8+
+- Python 3.8 or higher
 - Jupyter Notebook
 
-### Setup Steps
+### Installation
 
-Clone the repository:
+Clone the repo:
 ```bash
 git clone <your-repo-url>
 cd Principle-Component-Analysis Assignment
 ```
 
-Create a virtual environment (optional but recommended):
+Create virtual environment (optional):
 
 ```bash
 # Windows
@@ -73,13 +71,13 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-### Step 3: Install Required Packages
+Install packages:
 
 ```bash
 pip install numpy pandas matplotlib seaborn jupyter
 ```
 
-### Alternative: Install from requirements.txt
+Or use requirements.txt:
 
 ```bash
 pip install -r requirements.txt
@@ -87,21 +85,21 @@ pip install -r requirements.txt
 
 ## How to Run
 
-### Running the Data Exploration Notebook
+### 1. Data Exploration
 
-First, run the data exploration notebook:
+Run the data exploration notebook first:
 
 ```bash
 jupyter notebook data_exploration.ipynb
 ```
 
-This will load the World Bank dataset, analyze missing values, select indicators, and save the cleaned data as `prepared_data_for_pca.csv`.
+This loads the World Bank dataset, handles missing values, selects indicators, and saves cleaned data as `prepared_data_for_pca.csv`.
 
-Note: Run all cells in order.
+Run all cells in order.
 
-### Running the PCA Implementation
+### 2. PCA Implementation
 
-After preparing the data, open and run the main notebook:
+After preparing data, run the main notebook:
 
 ```bash
 jupyter notebook Template_PCA_Formative_1[Peer_Pair_Number].ipynb
@@ -111,32 +109,26 @@ Run all cells sequentially.
 
 ## Dataset
 
-**Source:** World Bank - World Development Indicators (Sub-Saharan Africa)
+**Source:** World Bank Development Indicators (Sub-Saharan Africa)
 
-**Characteristics:**
-- Region: Sub-Saharan Africa (SSF)
-- Time Period: 2000-2023 (24 years)
+- Region: Sub-Saharan Africa
+- Period: 2000-2023 (24 years)
 - Indicators: 20 development indicators
-- Missing Values: Yes (handled in preprocessing)
-- Non-numeric Columns: Yes (Country Name, Indicator Name)
+- Has missing values (handled in preprocessing)
+- Has non-numeric columns (Country Name, Indicator Name)
 
-**Indicator Types:**
-- Economic indicators (exports, imports, trade)
-- Social indicators (tourism, governance)
-- Development metrics (high-tech exports, financial services)
-
-The dataset meets all assignment requirements (missing values, non-numeric columns, more than 10 columns, African focus).
+Indicators include economic metrics (exports, imports, trade), social indicators (tourism, governance), and development metrics.
 
 ## Implementation
 
-### Algorithm Steps
+### Steps
 
-1. **Standardization** (using NumPy only)
+1. **Standardization** (NumPy only)
    ```python
    standardized_data = (data - mean) / std_deviation
    ```
 
-2. **Covariance Matrix Calculation**
+2. **Covariance Matrix**
    ```python
    cov_matrix = (X^T × X) / (n - 1)
    ```
@@ -146,115 +138,72 @@ The dataset meets all assignment requirements (missing values, non-numeric colum
    eigenvalues, eigenvectors = np.linalg.eig(cov_matrix)
    ```
 
-4. **Sort Components by Variance**
+4. **Sort Components**
    ```python
    sorted_indices = np.argsort(eigenvalues)[::-1]
    ```
 
-5. **Dynamic Component Selection**
-   - Target: 85% explained variance
-   - Automatically selects optimal number of components
+5. **Select Components** (85% variance threshold)
+   ```python
+   num_components = np.argmax(cumulative_variance >= 0.85) + 1
+   ```
 
-6. **Data Projection**
+6. **Project Data**
    ```python
    reduced_data = standardized_data × principal_components
    ```
 
-### Key Features
+## Results
 
-- ✅ **No sklearn for PCA**: Pure NumPy implementation
-- ✅ **Manual standardization**: Statistical normalization from scratch
-- ✅ **Dynamic component selection**: Based on variance threshold
-- ✅ **Performance benchmarking**: Execution time and memory analysis
-6. **Data Projection**
-   ```python
-   reduced_data = standardized_data × principal_components
-   ```
-
-### Implementation Features
-
-- No sklearn for PCA core functionality
-- Manual standardization using NumPy
-- Dynamic component selection based on variance threshold (85%)
-- Performance benchmarking with execution time and memory analysis
-- Visualizations: before/after PCA, biplots, 3D plots, component loadings
-- Reconstruction analysis with quality metrics
-
-## Expected Results
-
-**Task 1**: PCA from Scratch
+**Dimensionality Reduction:**
 - Input: 24 observations × 20 features
-- Output: 24 observations × 8-10 components (85% variance retained)
-- Dimensionality reduction: approximately 50-60%
+- Output: 24 observations × 3 components
+- Variance retained: 89.45%
+- Reduction: 85%
 
-**Task 2**: Dynamic Component Selection
-- Variance threshold: 85%
-- Components automatically selected to meet threshold
-
-**Task 3**: Performance Benchmarking
-- Execution time: typically under 1 second
-- Memory reduction: approximately 50%
-- Reconstruction error: under 5% relative error
+**Performance:**
+- Execution time: 0.0069 seconds
+- Memory saved: 85%
+- Reconstruction R² Score: 0.8945
 
 ## Visualizations
 
-The notebooks include:
-- Data distribution histograms
-- Correlation matrix heatmap
-- Eigenvalue scree plot
-- Cumulative variance plot
-- Before/after PCA scatter plots (2D)
-- 3D PCA visualization
-- Biplot with feature loadings
-- Component loadings bar charts
-- Reconstruction quality comparisons
-- Error analysis plots
+Includes:
+- Data distributions and correlation matrix
+- Eigenvalue scree plots
+- Variance plots (individual and cumulative)
+- 2D and 3D PCA plots
+- Biplots with feature loadings
+- Component loadings charts
+- Reconstruction quality and error analysis
 
-## Assignment Requirements
+## Requirements Met
 
-All requirements met:
-- Individual work
-- Dataset has missing values
-- Dataset has non-numeric columns
+- PCA from scratch (Task 1)
+- Dynamic component selection based on 85% variance threshold (Task 2)
+- Performance benchmarking (Task 3)
+- African data (Sub-Saharan Africa)
+- Dataset has missing values and non-numeric columns
 - More than 10 columns (20 indicators)
-- African-focused data (Sub-Saharan Africa)
-- Not a generic dataset (World Bank indicators)
-- PCA implemented from scratch (Task 1)
-- Manual standardization without sklearn
-- Eigendecomposition applied
-- Dynamic component selection (Task 2, 85% variance)
-- Performance optimization (Task 3, benchmarking)
-- All outputs visible in notebooks
-- GitHub repository with documentation
+- Manual standardization (no sklearn for PCA)
+- All outputs visible
 
-## Mathematical Foundation
+## Math Formulas
 
-**Standardization:**
-z = (x - μ) / σ
+Standardization: z = (x - μ) / σ
 
-**Covariance Matrix:**
-Cov(X) = (X^T × X) / (n - 1)
+Covariance: Cov(X) = (X^T × X) / (n - 1)
 
-**Eigendecomposition:**
-Cov(X)v = λv
+Eigendecomposition: Cov(X)v = λv
 
-where v is the eigenvector (principal component) and λ is the eigenvalue (variance explained)
+Explained Variance: EVR = λ_i / Σλ_j
 
-**Explained Variance Ratio:**
-EVR_i = λ_i / Σλ_j
+Projection: Z = X × W_k
 
-**Data Projection:**
-Z = X × W_k
-
-where X is standardized data, W_k contains top k eigenvectors, and Z is the reduced data
-
-## Troubleshooting
+## Common Issues
 
 **"File not found: prepared_data_for_pca.csv"**
-Run data_exploration.ipynb first to generate the file.
-
-**"Memory Error"**
-Reduce the number of features or use a smaller time range.
+Run data_exploration.ipynb first.
 
 **Import errors**
 ```bash
@@ -262,18 +211,11 @@ pip install numpy pandas matplotlib seaborn jupyter
 ```
 
 **Kernel crashes**
-Restart the kernel and run cells from the beginning.
+Restart kernel and run from beginning.
 
 ## References
 
-- StatQuest: Principal Component Analysis (YouTube)
-- How Is Explained Variance Used In PCA? (YouTube)
+- StatQuest: Principal Component Analysis
 - World Bank World Development Indicators
-- NumPy Linear Algebra Documentation
-
-## Author
-
-[Your Name]
-February 2026
-Advanced Linear Algebra Assignment
+- NumPy Documentation
 
