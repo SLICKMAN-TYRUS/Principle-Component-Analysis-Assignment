@@ -78,10 +78,10 @@ The implementation is built using only NumPy for all PCA computations (no sklear
 
 ### Installation
 
-Clone the repo:
+Clone the repository:
 ```bash
-git clone <your-repo-url>
-cd Principle-Component-Analysis Assignment
+git clone https://github.com/SLICKMAN-TYRUS/Principle-Component-Analysis-Assignment.git
+cd Principle-Component-Analysis-Assignment
 ```
 
 Create virtual environment (optional):
@@ -168,11 +168,11 @@ Run all cells sequentially.
 - Verified no missing values in final dataset (confirmed 0 missing values)
 
 **Dataset Characteristics (Assignment Requirements):**
-- ✓ Has missing values in original data (handled in preprocessing)
-- ✓ Contains non-numeric columns (Country Name, Indicator Name in raw data)
-- ✓ More than 10 columns (20 indicators selected)
-- ✓ African-focused data (Sub-Saharan Africa region specifically)
-- ✓ Real-world dataset (World Bank official statistics)
+- Has missing values in original data (handled in preprocessing)
+- Contains non-numeric columns (Country Name, Indicator Name in raw data)
+- More than 10 columns (20 indicators selected)
+- African-focused data (Sub-Saharan Africa region specifically)
+- Real-world dataset (World Bank official statistics)
 
 ## PCA Implementation Details
 
@@ -455,55 +455,55 @@ All plots include:
 ### Phase 3: Analysis and Validation
 
 **Validation Checks:**
-- Standardization: Mean ≈ 0, Std = 1 for all features ✓
-- Eigenvalue sum equals total variance ✓
-- Orthogonality of eigenvectors verified ✓
-- Reconstruction error within acceptable range (10.55%) ✓
-- Cumulative variance exceeds 85% target (89.45%) ✓
+- Standardization: Mean ≈ 0, Std = 1 for all features (checked)
+- Eigenvalue sum equals total variance (verified)
+- Orthogonality of eigenvectors verified (passed)
+- Reconstruction error within acceptable range (10.55%)
+- Cumulative variance exceeds 85% target (89.45%)
 
 ## Assignment Requirements Checklist
 
-### Task 1: PCA Implementation from Scratch ✓
-- [x] No sklearn used for PCA core algorithm
-- [x] Manual standardization with NumPy
-- [x] Covariance matrix computed manually
-- [x] Eigendecomposition using np.linalg.eig
-- [x] Manual component sorting and selection
-- [x] Manual data projection
-- [x] All mathematical steps implemented explicitly
+### Task 1: PCA Implementation from Scratch
+- No sklearn used for PCA core algorithm
+- Manual standardization with NumPy
+- Covariance matrix computed manually
+- Eigendecomposition using np.linalg.eig
+- Manual component sorting and selection
+- Manual data projection
+- All mathematical steps implemented explicitly
 
-### Task 2: Dynamic Component Selection ✓
-- [x] 85% variance threshold implemented
-- [x] Automatic component number selection (result: 3 components)
-- [x] Cumulative variance calculation
-- [x] Dynamic thresholding logic
-- [x] Achieved 89.45% variance (exceeds 85% target)
+### Task 2: Dynamic Component Selection
+- 85% variance threshold implemented
+- Automatic component number selection (result: 3 components)
+- Cumulative variance calculation
+- Dynamic thresholding logic
+- Achieved 89.45% variance (exceeds 85% target)
 
-### Task 3: Performance Optimization and Benchmarking ✓
-- [x] Execution time measurement (0.0069 seconds)
-- [x] Memory usage analysis (85% reduction)
-- [x] `pca_from_scratch()` function with timing
-- [x] Optimized using np.linalg.eigh for symmetric matrices
-- [x] Performance metrics reported
-- [x] Efficiency analysis completed
+### Task 3: Performance Optimization and Benchmarking
+- Execution time measurement (0.0069 seconds)
+- Memory usage analysis (85% reduction)
+- pca_from_scratch() function with timing
+- Optimized using np.linalg.eigh for symmetric matrices
+- Performance metrics reported
+- Efficiency analysis completed
 
-### Dataset Requirements ✓
-- [x] African data: Sub-Saharan Africa region
-- [x] Has missing values: Yes (handled in preprocessing)
-- [x] Has non-numeric columns: Yes (Country Name, Indicator Name in raw data)
-- [x] More than 10 columns: 20 indicators selected
-- [x] Real-world dataset: World Bank official statistics
-- [x] Not generic/toy dataset
+### Dataset Requirements
+- African data: Sub-Saharan Africa region
+- Has missing values: Yes (handled in preprocessing)
+- Has non-numeric columns: Yes (Country Name, Indicator Name in raw data)
+- More than 10 columns: 20 indicators selected
+- Real-world dataset: World Bank official statistics
+- Not generic/toy dataset
 
-### Documentation Requirements ✓
-- [x] GitHub repository created
-- [x] README.md with full project documentation
-- [x] requirements.txt for dependencies
-- [x] .gitignore for clean repository
-- [x] All code cells executed and outputs visible
-- [x] Comprehensive comments and explanations
-- [x] Mathematical formulas documented
-- [x] Visualizations generated and saved in notebooks
+### Documentation Requirements
+- GitHub repository created
+- README.md with full project documentation
+- requirements.txt for dependencies
+- .gitignore for clean repository
+- All code cells executed and outputs visible
+- Comprehensive comments and explanations
+- Mathematical formulas documented
+- Visualizations generated and saved in notebooks
 
 ## Mathematical Foundations
 
@@ -771,12 +771,12 @@ jupyter==1.0.0       # Notebook environment
 This project successfully implemented Principal Component Analysis from scratch, demonstrating a complete understanding of the mathematical foundations and practical applications of PCA. The analysis reduced 20 World Bank development indicators for Sub-Saharan Africa (2000-2023) into 3 principal components that capture 89.45% of the total variance.
 
 **Key Achievements:**
-1. ✓ Built PCA algorithm from scratch using only NumPy (no sklearn)
-2. ✓ Implemented dynamic component selection based on variance threshold
-3. ✓ Achieved 85% dimensionality reduction (20 → 3 features)
-4. ✓ Completed in 0.0069 seconds with 85% memory savings
-5. ✓ Generated comprehensive visualizations for interpretation
-6. ✓ Validated results through reconstruction analysis (R²=0.8945)
+1. Built PCA algorithm from scratch using only NumPy (no sklearn)
+2. Implemented dynamic component selection based on variance threshold
+3. Achieved 85% dimensionality reduction (20 → 3 features)
+4. Completed in 0.0069 seconds with 85% memory savings
+5. Generated comprehensive visualizations for interpretation
+6. Validated results through reconstruction analysis (R²=0.8945)
 
 **Technical Competencies Demonstrated:**
 - Linear algebra (eigendecomposition, matrix operations)
@@ -798,7 +798,8 @@ The project meets all assignment requirements (Task 1: PCA from scratch, Task 2:
 
 **Project Repository:** [github.com/SLICKMAN-TYRUS/Principle-Component-Analysis-Assignment](https://github.com/SLICKMAN-TYRUS/Principle-Component-Analysis-Assignment)
 
-**Assignment:** Advanced Linear Algebra - Principal Component Analysis  
-**Date:** February 2026  
-**Status:** ✓ Complete
+**Assignment:** Formative 2: Advanced Linear Algebra - Principal Component Analysis  
+**Date:** 8 February 2026  
+**Status:** Complete
 
+Author: Ajak Chol
